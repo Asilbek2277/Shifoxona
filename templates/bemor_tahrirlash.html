@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tahrirlash</title>
+</head>
+<body>
+    <h1>Hamma bemorlarni tahrirlash</h1>
+     <form method="post"> {%csrf_token%}
+        <label>Ism:</label>
+        <input name="ism" type="text" value="{{bemor.ism}}">
+        <label>Tel:</label>
+        <input name="tel" type="text" value="{{bemor.tel}}">
+        <label>Buyurtma: </label>
+        <select name="buyurtma">
+            {%for x in buyurtma%}
+            <option value="{{x.id}}">{{x.tashhis}}</option>
+            {%endfor%}
+        </select>
+        <button>Edit</button>
+     </form>
+</body>
+</html>

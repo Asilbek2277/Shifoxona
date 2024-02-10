@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bemorlar</title>
+</head>
+<body>
+    <h1>Hamma bemorlar jadvali</h1>
+    <form>
+        <input name="bemor_ism" type="text" placeholder="Bemor ismini kiriting">
+        <button>Search</button>
+    </form>
+    {% for b in bemor %}
+    <ul>
+        <li>
+            {{b.ism}}
+            <a href="/bemor_ochirish/{{b.id}}/"><button>Delete</button></a>
+            <a href="/bemor_tahrirlash/{{b.id}}/"><button>Edit</button></a>
+        </li>
+    </ul>
+    {% endfor %}
+
+    <form method="post">
+        {% csrf_token %}
+        <label>Ism:</label>
+        <input name="ism" type="text">
+        <label>Tel:</label>
+        <input name="tel" type="text">
+        <label>Buyurtma:</label>
+        <select name="buyurtma">
+            {% for x in buyurtma %}
+            <option value="{{x.id}}">{{x.tashhis}}</option>
+            {% endfor %}
+        </select>
+        <button>Add</button>
+
+    </form>
+</body>
+</html>

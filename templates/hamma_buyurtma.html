@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buyurtmalar</title>
+</head>
+<body>
+    <h1>Hamma buyurtmalar</h1>
+    <form>
+        <input name="buyurtma" type="text" placeholder="Tashhis nomini kiriting">
+        <button>Search</button>
+    </form>
+    {% for b in buyurtma %}
+    <ul>
+        <li>
+            {{b.id}}. {{b.tashhis}}
+            <a href="/buyurtma_ochirish/{{b.id}}/"><button>Delete</button></a>
+            <a href="/buyurtma_tahrirlash/{{b.id}}/"><button>Edit</button></a>
+        </li>
+    </ul>
+    {% endfor %}
+    <form method="post">
+        {% csrf_token %}
+        <label>Sana:</label>
+        <input name="sana" type="date">
+        <label>Tashhis:</label>
+        <input name="tashhis" type="text">
+        <label>Xona:</label>
+        <select name="xona">
+            {% for x in xona %}
+            <option value="{{x.id}}">{{x.number}}</option>
+            {% endfor %}
+        </select>
+
+        <label>Shifokor:</label>
+        <select name="shifokor">
+            {% for sh in shifokor %}
+            <option value="{{sh.id}}">{{sh.ism}}</option>
+            {% endfor %}
+        </select>
+
+        <label>Kishi soni:</label>
+        <input name="kishi_soni" type="number">
+
+        <label>Summa:</label>
+        <input name="summa" type="number">
+
+        <label>Tuzaldi </label>
+        <input name="tuzaldi" type="checkbox" >
+        <button>Add</button>
+
+    </form>
+</body>
+</html>

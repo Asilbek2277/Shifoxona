@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xona</title>
+</head>
+<body>
+  <h1>Xonalar jadvalini tahrirlash</h1>
+  <form method="post">{% csrf_token %}
+      <label>Number:</label>
+      <input name="number" type="number" value="{{xonalar.number}}">
+      <label>Band</label>
+      <input name="band" type="checkbox" value="{{xonalar.band}}">
+      <label>Narx:</label>
+      <input name="joy" type="number" value="{{xonalar.joy}}">
+      <button>Edit</button>
+  </form>
+</body>
+</html>
+
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shifokorlar</title>
+</head>
+<body>
+    <h1>Hamma shifokorlar</h1>
+
+
+    <form>
+        <input name="shifokor_ismi" type="text" placeholder="Shifokor ismini kiriting">
+        <button>Search</button>
+    </form>
+    {% for sh in shifokor %}
+
+    <ul>
+        <li>
+            {{sh.id}}. {{sh.ism}}
+            <a href="/shifokor_ochirish/{{sh.id}}/"><button>Delete</button></a>
+            <a href="/shifokor_tahrirlash/{{sh.id}}/"><button>Edit</button></a>
+        </li>
+    </ul>
+    {% endfor %}
+
+    <form method="post">{% csrf_token %}
+        <label>Ism:</label>
+        <input name="ism" type="text">
+        <label>Ish vaqti: </label>
+        <input name="ish_vaqti" type="text">
+        <label>Tel: </label>
+        <input name="tel" type="text">
+        <label>Xizmat turi: </label>
+        <select name="xizmat">
+            {% for x in xizmat %}
+            <option value="{{x.id}}">{{x.nom}}</option>
+            {% endfor %}
+        </select>
+        <button>Add</button>
+    </form>
+
+
+</body>
+</html>

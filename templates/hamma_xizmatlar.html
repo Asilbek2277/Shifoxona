@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xizmat</title>
+</head>
+<body>
+    <h1>Hamma xizmatlar haqida ma'lumotlar</h1>
+
+    <form>
+        <input name="xizmat_nomi" type="text" placeholder="Xizmat nomini kiriting">
+        <button>Search</button>
+    </form>
+
+    {% for xizmat in xizmatlar%}
+    <ul>
+        <li>
+            {{xizmat.id}}. {{xizmat.nom}}
+             <a href="/xizmat_ochirish/{{xizmat.id}}"><button>Delete</button></a>
+             <a href="/xizmat_tahrirlash/{{xizmat.id}}"><button>Edit</button></a>
+        </li>
+    </ul>
+    {% endfor %}
+    <form method="post">
+        {% csrf_token %}
+        <label>Nom:</label>
+        <input name="nom" type="text">
+        <label>Xona raqami: </label>
+        <select name="xona">
+            {% for x in xona %}
+            <option value="{{x.id}}">{{x.number}}</option>
+            {% endfor %}
+        </select>
+        <label>Narx:</label>
+        <input name="narx" type="number">
+        <button>Add</button>
+    </form>
+</body>
+</html>

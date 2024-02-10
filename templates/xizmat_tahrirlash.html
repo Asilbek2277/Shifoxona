@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xizmat</title>
+</head>
+<body>
+    <h1>Xizmatlar jadvalini tahrirlash</h1>
+    <form method="post"> {%csrf_token%}
+        <label>Nom:</label>
+        <input name="nom" type="text" value="{{xizmat.nom}}">
+        <label>Xona raqami:</label>
+        <select name="xona">
+            {%for x in xona%}
+            <option value="{{x.id}}">{{x.number}}</option>
+            {%endfor%}
+        </select>
+        <label>Narx:</label>
+        <input name="narx" type="number" value="{{xizmat.narx}}">
+        <button>Edit</button>
+    </form>
+
+</body>
+</html>

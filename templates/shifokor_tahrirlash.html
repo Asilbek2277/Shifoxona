@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tahrirlash</title>
+</head>
+<body>
+    <h1>Shifokorlar jadvalini tahrirlash</h1>
+
+    <form method="post"> {%csrf_token%}
+        <label>Ism:</label>
+        <input name="ism" type="text" value="{{shifokor.ism}}">
+        <label>Ish vaqti: </label>
+        <input name="ish_vaqti" type="text" value="{{shifokor.ish_vaqti}}">
+        <label>Tel:</label>
+        <input name="tel" type="text" value="{{shifokor.tel}}">
+        <label>Xizmat turi: </label>
+        <select name="xizmat">
+            {%for x in xizmat%}
+            <option value="{{x.id}}">{{x.nom}}</option>
+            {%endfor%}
+        </select>
+        <button>Edit</button>
+    </form>
+
+</body>
+</html>

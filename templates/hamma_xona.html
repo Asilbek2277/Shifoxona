@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xona</title>
+</head>
+<body>
+
+    <h1>Hamma xonalar</h1>
+    <form>
+        <input name="xona_raqami" type="number" placeholder="Xona raqamini yozing">
+        <button>Qidirish</button>
+    </form>
+    {% for xona in xonalar %}
+    <ul>
+        <li>
+            {{xona.id}}. {{xona.number}}
+            <a href="/xona_ochirish/{{xona.id}}"><button>Delete</button></a>
+            <a href="/xona_tahrirlash/{{xona.id}}"><button>Edit</button></a>
+
+        </li>
+    </ul>
+    {% endfor %}
+    <form method="post">{% csrf_token %}
+        <label>Number:</label>
+        <input name="number" type="number" >
+        <label>Band</label>
+        <input name="band" type="checkbox">
+        <label>Joy:</label>
+        <input name="joy" type="number">
+        <button>Qo'shish</button>
+    </form>
+
+</body>
+</html>

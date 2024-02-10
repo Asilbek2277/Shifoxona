@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tahrislash</title>
+</head>
+<body>
+    <h1>Buyurtma jadvalini tahrirlash</h1>
+    <form method="post"> {%csrf_token%}
+        <label>Sana:</label>
+        <input name="sana" type="date" value="{{buyurtma.sana}}">
+        <label>Tashhis: </label>
+        <input name="tashhis" type="text" value="{{buyurtma.tashhis}}">
+        <label>Xona raqami:</label>
+        <select name="xona">
+            {%for x in xona%}
+            <option value="{{x.id}}">
+                {{x.number}}
+            </option>
+            {% endfor %}
+        </select>
+        <label>Shifokor: </label>
+        <select name="shifokor">
+            {%for sh in shifokor%}
+            <option value="{{sh.id}}">{{sh.ism}}</option>
+            {%endfor%}
+        </select>
+        <label>Kishi soni: </label>
+        <input name="kishi_soni" type="number" value="{{buyurtma.kishi_soni}}">
+        <label>Summa:</label>
+        <input name="summa" type="number" value="{{buyurtma.summa}}">
+        <label>Tuzaldi</label>
+        <input name="tuzaldi" type="checkbox">
+        <button>Edit</button>
+    </form>
+
+</body>
+</html>
